@@ -15,5 +15,11 @@
     "url": "https://github.com/jjmax75/directory-to-json.git"
   },
   "author": "John Behan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "micro": "^9.3.2"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
 }
