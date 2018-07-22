@@ -1,19 +1,32 @@
 {
-  "name": "directory-to-json",
-  "version": "1.0.0",
+  "author": "John Behan",
+  "dependencies": {
+    "micro": "9.3.2"
+  },
   "description": "Sends a JSON representation of a folder structure",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.13.0",
+    "prettier": "1.13.7"
   },
   "keywords": [
     "node",
     "micro"
   ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "directory-to-json",
   "repository": {
     "type": "git",
     "url": "https://github.com/jjmax75/directory-to-json.git"
   },
-  "author": "John Behan",
-  "license": "ISC"
+  "scripts": {
+    "dev": "micro-dev",
+    "inspect": "node --inspect node_modules/.bin/micro-dev",
+    "start": "micro",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
 }
