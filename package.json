@@ -5,11 +5,15 @@
   },
   "description": "Sends a JSON representation of a folder structure",
   "devDependencies": {
+    "ava": "1.0.0-beta.6",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "17.0.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-import": "2.13.0",
-    "prettier": "1.13.7"
+    "prettier": "1.13.7",
+    "request": "2.87.0",
+    "request-promise": "4.2.2",
+    "test-listen": "1.1.0"
   },
   "keywords": [
     "node",
@@ -26,7 +30,7 @@
     "dev": "micro-dev",
     "inspect": "node --inspect node_modules/.bin/micro-dev",
     "start": "micro",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "version": "1.0.0"
 }
