@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM resin/raspberry-pi-node:onbuild
 
 RUN mkdir -p /usr/src/app
 
