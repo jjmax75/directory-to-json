@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM resin/rpi-raspbian
 
 RUN mkdir -p /usr/src/app
 
