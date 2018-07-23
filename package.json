@@ -1,5 +1,5 @@
 {
-  "author": "John Behan",
+  "author": "John Behan <behanj@gmail.com>",
   "dependencies": {
     "micro": "9.3.2"
   },
