@@ -1,0 +1,1 @@
+docker run -d -it -p 3000:9999 --restart unless-stopped --name=jjmax-get-folder-list jjmax/directory-to-json npm run start
