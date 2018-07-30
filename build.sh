@@ -1,0 +1,1 @@
+docker build -t --restart unless-stopped jjmax/directory-to-json .
