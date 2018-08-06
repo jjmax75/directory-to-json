@@ -1,49 +1,28 @@
-var fs = require("fs");
-var path = require("path");
+const fs = require('fs');
+const util = require('util');
 
-function logger(err, res) {
-  if (err) console.log(err);
+const readdir = util.promisify(fs.readdir);
 
-  console.log(JSON.stringify(res));
-}
+const directoryTreeToObj = async path => {
+  const results = await readdir(path);
 
-// send directory to parse and what to do with json after - logger or return
-// kudos - https://stackoverflow.com/a/31831122/1377969
-var directoryTreeToObj = function(dir, done) {
-  var results = [];
+  const sorted = results.reduce(async (acc, item) => {
+    const collection = await acc;
+    const filePath = `${path}/${item}`;
+    if (fs.lstatSync(filePath).isFile()) {
+      collection.files.push(filePath);
+    } else {
+      collection.dirs[item] = await directoryTreeToObj(filePath);
+    }
+    return acc;
+  }, Promise.resolve({ files: [], dirs: {} }));
 
-  fs.readdir(dir, function(err, list) {
-    if (err) return done(err);
-
-    var pending = list.length;
-
-    if (!pending)
-      return done(null, {
-        name: path.basename(dir),
-        type: "folder",
-        children: results
-      });
-
-    list.forEach(function(file) {
-      file = path.resolve(dir, file);
-      fs.stat(file, function(err, stat) {
-        if (stat && stat.isDirectory()) {
-          directoryTreeToObj(file, function(err, res) {
-            results.push({
-              name: path.basename(file),
-              type: "folder",
-              children: res
-            });
-            if (!--pending) done(null, results);
-          });
-        } else {
-          results.push({
-            type: "file",
-            name: path.basename(file)
-          });
-          if (!--pending) done(null, results);
-        }
-      });
-    });
-  });
+  return sorted;
 };
+
+// (async () => {
+//   const obj = await directoryTreeToObj('/Users/john/Downloads/pythonforkids');
+//   console.log(obj);
+// })();
+
+module.exports = directoryTreeToObj;
